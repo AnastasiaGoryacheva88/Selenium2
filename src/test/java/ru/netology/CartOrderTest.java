@@ -36,7 +36,6 @@ public class CartOrderTest {
 
     @Test
     void positiveTest() {
-        driver.get("http://localhost:9999");
         driver.findElements(By.tagName("input")).get(0).sendKeys("Горячева Анастасия");
         driver.findElements(By.tagName("input")).get(1).sendKeys("+79157777777");
         driver.findElement(By.className("checkbox__box")).click();
@@ -48,7 +47,6 @@ public class CartOrderTest {
 
     @Test
     void shouldDoubleNameTest() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Анна-Мария Корне");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79157777777");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -60,7 +58,6 @@ public class CartOrderTest {
 
     @Test
     void shouldNotAddNameInLatinLetters() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Goryacheva Anastasia");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79157777777");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -72,7 +69,6 @@ public class CartOrderTest {
 
     @Test
     void shouldNotAddSymbolInName() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Анастасия@");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79157777777");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -84,7 +80,7 @@ public class CartOrderTest {
 
     @Test
     void shouldNotAddNumberOverLimit() {
-        driver.get("http://localhost:9999");
+
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Горячева Анастасия");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+791577777778");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -96,7 +92,6 @@ public class CartOrderTest {
 
     @Test
     void shouldNotAddNumberLowLimit() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Горячева Анастасия");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+7915777777");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -105,9 +100,9 @@ public class CartOrderTest {
         String actual = driver.findElement(By.cssSelector("[data-test-id=phone].input_invalid .input__sub")).getText().trim();
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldNotPassWithoutCheckBox() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Горячева Анастасия");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79157777777");
         driver.findElement(By.className("button__text")).click();
@@ -116,7 +111,6 @@ public class CartOrderTest {
 
     @Test
     void shouldNotPassWithEmptyName() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79157777777");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -128,7 +122,6 @@ public class CartOrderTest {
 
     @Test
     void shouldNotPassWithEmptyPhone() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Горячева Анастасия");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
